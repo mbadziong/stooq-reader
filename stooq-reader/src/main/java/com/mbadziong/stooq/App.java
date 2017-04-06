@@ -1,13 +1,12 @@
 package com.mbadziong.stooq;
 
-/**
- * Hello world!
- *
- */
-public class App 
+import com.mbadziong.stooq.jobs.StooqDownloaderJobScheduler;
+import org.quartz.SchedulerException;
+
+public class App
 {
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+    public static void main( String[] args ) throws SchedulerException {
+        StooqDownloaderJobScheduler scheduler = new StooqDownloaderJobScheduler();
+        scheduler.run(5);
     }
 }
