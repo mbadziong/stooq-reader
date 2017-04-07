@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 public class Cli {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Cli.class);
+    public static final int DEFAULT_INTERVAL_OPTION_VALUE = 60;
 
     private String[] args;
     private Options options;
@@ -17,24 +18,29 @@ public class Cli {
         options = initializeDefaultOptions();
     }
 
-    public int parseArgs() {
+    public int parseInterval() {
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = null;
+        int interval = 0;
 
         try {
             cmd = parser.parse(options, args);
 
-            if(cmd.hasOption("i")) {
-                String interval = cmd.getOptionValue("i");
+            if (cmd.hasOption("i")) {
+                String optionValue = cmd.getOptionValue("i");
+                LOGGER.info("interval value", optionValue);
+                interval = Integer.parseInt(optionValue);
                 LOGGER.info("Parsed %d as interval", interval);
             }
 
-        } catch (ParseException e) {
+        } catch (ParseException | NumberFormatException e) {
             LOGGER.error("Parse error", e);
             showHelp();
         }
 
-        return 2;
+        return interval > 0
+                ? interval
+                : DEFAULT_INTERVAL_OPTION_VALUE;
     }
 
     private Options initializeDefaultOptions() {

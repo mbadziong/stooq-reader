@@ -17,8 +17,8 @@ public class Application {
     public static void main(String[] args) throws SchedulerException {
         SpringApplication springApplication = new SpringApplication();
         ApplicationContext ctx = springApplication.run(Application.class, args);
-        JobDetailImpl job = (JobDetailImpl) ctx.getBean("myQuartzJob");
+        JobDetailImpl job = (JobDetailImpl) ctx.getBean("stooqJob");
 
-        new Scheduler().run(job, new Cli(args).parseArgs());
+        new Scheduler().run(job, new Cli(args).parseInterval());
     }
 }
