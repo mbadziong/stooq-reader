@@ -34,7 +34,7 @@ public class Cli {
             showHelp();
         }
 
-        return 60;
+        return 2;
     }
 
     private Options initializeDefaultOptions() {
