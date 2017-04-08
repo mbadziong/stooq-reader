@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
 @Component
-public class Wig20Fut extends MarketIndexDownloader {
+public class Wig20Fut extends StooqMarketIndexDownloader {
 
     @PostConstruct
     public void init() {

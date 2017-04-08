@@ -3,6 +3,7 @@ package com.mbadziong.stooq.stooq.data.parser;
 import com.mbadziong.stooq.stooq.exception.CsvFormatException;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,13 +12,13 @@ public class StooqCsvParser {
 
     private static final String MARKET_INDEX_VALUE_COLUMN = "Zamkniecie";
 
-    public String getMarketIndexValue(String csv) throws CsvFormatException {
+    public BigDecimal getMarketIndexValue(String csv) throws CsvFormatException {
         Map<String, String> stooqMap = parseCsv(csv);
 
-        return stooqMap.get(MARKET_INDEX_VALUE_COLUMN);
+        return new BigDecimal(stooqMap.get(MARKET_INDEX_VALUE_COLUMN));
     }
 
-    private Map<String, String> parseCsv(String csv) throws CsvFormatException {
+    public Map<String, String> parseCsv(String csv) throws CsvFormatException {
         String[] csvRows = csv.split("\r\n");
 
         HashMap<String, String> stooqMap = new HashMap<>();
