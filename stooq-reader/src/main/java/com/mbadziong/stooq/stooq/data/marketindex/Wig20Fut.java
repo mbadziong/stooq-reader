@@ -1,15 +1,15 @@
 package com.mbadziong.stooq.stooq.data.marketindex;
 
 import com.mbadziong.stooq.stooq.data.model.StooqMarketIndex;
+import com.mbadziong.stooq.stooq.data.parser.StooqCsvParser;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.PostConstruct;
+import org.springframework.web.client.RestTemplate;
 
 @Component
 public class Wig20Fut extends StooqMarketIndexDownloader {
 
-    @PostConstruct
-    public void init() {
-        this.stooqMarketIndex = StooqMarketIndex.WIG20FUT;
+    public Wig20Fut(RestTemplate restTemplate, StooqCsvParser stooqCsvParser) {
+        super(restTemplate, stooqCsvParser);
+        stooqMarketIndex = StooqMarketIndex.WIG20FUT;
     }
 }

@@ -2,7 +2,6 @@ package com.mbadziong.stooq.stooq.data.service;
 
 import com.mbadziong.stooq.stooq.data.marketindex.*;
 import com.mbadziong.stooq.stooq.data.model.MarketIndex;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -10,20 +9,23 @@ import java.math.BigDecimal;
 @Service
 public class StooqDataSupplierImpl implements StooqDataSupplier {
 
-    @Autowired
     private Wig wig;
 
-    @Autowired
     private Wig20 wig20;
 
-    @Autowired
     private Wig20Fut wig20Fut;
 
-    @Autowired
     private Mwig40 mwig40;
 
-    @Autowired
     private Swig80 swig80;
+
+    public StooqDataSupplierImpl(Wig wig, Wig20 wig20, Wig20Fut wig20Fut, Mwig40 mwig40, Swig80 swig80) {
+        this.wig = wig;
+        this.wig20 = wig20;
+        this.wig20Fut = wig20Fut;
+        this.mwig40 = mwig40;
+        this.swig80 = swig80;
+    }
 
     @Override
     public BigDecimal getWig() {

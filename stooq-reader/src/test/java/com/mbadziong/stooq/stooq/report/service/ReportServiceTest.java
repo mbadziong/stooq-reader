@@ -18,7 +18,7 @@ import static org.mockito.Mockito.verify;
 public class ReportServiceTest {
 
     @InjectMocks
-    private ReportService reportService = new ReportService();
+    private ReportService reportService;
 
     @Mock
     private ReportWriter reportWriter;

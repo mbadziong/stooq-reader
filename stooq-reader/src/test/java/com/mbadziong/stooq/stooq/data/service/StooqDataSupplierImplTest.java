@@ -1,8 +1,8 @@
 package com.mbadziong.stooq.stooq.data.service;
 
-import com.mbadziong.stooq.testdata.SampleMarketIndex;
 import com.mbadziong.stooq.stooq.data.marketindex.*;
 import com.mbadziong.stooq.stooq.data.model.MarketIndex;
+import com.mbadziong.stooq.testdata.SampleMarketIndex;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +21,7 @@ import static org.mockito.Mockito.when;
 public class StooqDataSupplierImplTest {
 
     @InjectMocks
-    private StooqDataSupplier stooqDataSupplier = new StooqDataSupplierImpl();
+    private StooqDataSupplierImpl stooqDataSupplier;
 
     @Mock
     private Wig wig;
@@ -84,7 +84,6 @@ public class StooqDataSupplierImplTest {
 
     @Test
     public void testGetAll() throws Exception {
-
         MarketIndex current = stooqDataSupplier.getAll();
 
         assertEquals(SampleMarketIndex.MARKET_INDEX, current);

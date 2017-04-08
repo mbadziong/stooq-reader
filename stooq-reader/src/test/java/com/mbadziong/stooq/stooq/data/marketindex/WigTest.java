@@ -26,7 +26,7 @@ import static org.mockito.Mockito.when;
 public class WigTest {
 
     @InjectMocks
-    private Wig wig = new Wig();
+    private Wig wig;
 
     @Mock
     private StooqCsvParser stooqCsvParser;
@@ -38,7 +38,6 @@ public class WigTest {
     public void setUp() throws Exception {
         when(restTemplate.getForObject(any(String.class), eq(String.class))).thenReturn(SampleCsv.VALID_CSV);
         when(stooqCsvParser.getMarketIndexValue(SampleCsv.VALID_CSV)).thenReturn(SampleMarketIndex.VALID_WIG);
-        wig.init();
     }
 
     @Test

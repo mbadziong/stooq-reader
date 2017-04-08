@@ -6,7 +6,6 @@ import com.mbadziong.stooq.stooq.data.model.StooqMarketIndex;
 import com.mbadziong.stooq.stooq.data.parser.StooqCsvParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
@@ -20,15 +19,18 @@ public abstract class StooqMarketIndexDownloader {
 
     protected final static String STOOQ_URL = "https://stooq.pl/q/l/?s=%s&f=sd2t2ohlc&h&e=csv";
 
-    @Autowired
     protected RestTemplate restTemplate;
 
-    @Autowired
     private StooqCsvParser stooqCsvParser;
 
     protected StooqMarketIndex stooqMarketIndex;
 
     private BigDecimal latestValue;
+
+    public StooqMarketIndexDownloader(RestTemplate restTemplate, StooqCsvParser stooqCsvParser) {
+        this.restTemplate = restTemplate;
+        this.stooqCsvParser = stooqCsvParser;
+    }
 
     public BigDecimal getCurrentValue() {
         BigDecimal currentValue = latestValue;
