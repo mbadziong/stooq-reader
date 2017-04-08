@@ -1,13 +1,14 @@
-package com.mbadziong.stooq.stooq.httpclient.marketindex;
+package com.mbadziong.stooq.stooq.data.marketindex;
 
 
-import com.mbadziong.stooq.stooq.httpclient.model.StooqMarketIndex;
-import com.mbadziong.stooq.stooq.httpclient.parser.StooqCsvParser;
-import com.mbadziong.stooq.stooq.httpclient.exception.CsvFormatException;
+import com.mbadziong.stooq.stooq.data.exception.CsvFormatException;
+import com.mbadziong.stooq.stooq.data.model.StooqMarketIndex;
+import com.mbadziong.stooq.stooq.data.parser.StooqCsvParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import java.math.BigDecimal;
@@ -27,21 +28,22 @@ public abstract class StooqMarketIndexDownloader {
 
     protected StooqMarketIndex stooqMarketIndex;
 
-    protected BigDecimal lastValue;
+    private BigDecimal latestValue;
 
     public BigDecimal getCurrentValue() {
-        LOGGER.info(String.format(STOOQ_URL, stooqMarketIndex.stockMarketIndex()));
-        String response = restTemplate.getForObject(
-                String.format(STOOQ_URL, stooqMarketIndex.stockMarketIndex()),
-                String.class);
-
-        BigDecimal currentValue = lastValue;
+        BigDecimal currentValue = latestValue;
 
         try {
+            String response = restTemplate.getForObject(
+                    String.format(STOOQ_URL, stooqMarketIndex.stockMarketIndex()),
+                    String.class);
+
             currentValue = stooqCsvParser.getMarketIndexValue(response);
-            lastValue = currentValue;
+            latestValue = currentValue;
         } catch (CsvFormatException e) {
-            LOGGER.error("Error during csv parse, returning last value instead.", e);
+            LOGGER.error("Error during csv parse, returning latest value instead.", e);
+        } catch (RestClientException e) {
+            LOGGER.error("Error during getting csv, returning latest value instead.", e);
         }
 
         return currentValue;

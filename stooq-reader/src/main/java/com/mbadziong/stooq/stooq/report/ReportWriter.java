@@ -1,6 +1,6 @@
 package com.mbadziong.stooq.stooq.report;
 
-import com.mbadziong.stooq.stooq.httpclient.model.MarketIndex;
+import com.mbadziong.stooq.stooq.data.model.MarketIndex;
 import com.mbadziong.stooq.stooq.report.model.ReportRow;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

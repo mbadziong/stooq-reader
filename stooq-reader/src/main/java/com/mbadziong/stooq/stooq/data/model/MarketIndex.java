@@ -1,6 +1,7 @@
-package com.mbadziong.stooq.stooq.httpclient.model;
+package com.mbadziong.stooq.stooq.data.model;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class MarketIndex {
@@ -74,5 +75,9 @@ public class MarketIndex {
     @Override
     public int hashCode() {
         return Objects.hash(wig, wig20, wig20fut, mwig40, swig80);
+    }
+
+    public boolean hasNulls() {
+        return Arrays.asList(wig, wig20, wig20fut, mwig40, swig80).contains(null);
     }
 }

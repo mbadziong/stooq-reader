@@ -1,6 +1,6 @@
 package com.mbadziong.stooq.stooq.report.service;
 
-import com.mbadziong.stooq.stooq.httpclient.model.MarketIndex;
+import com.mbadziong.stooq.stooq.data.model.MarketIndex;
 import com.mbadziong.stooq.stooq.report.ReportWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,11 +15,11 @@ public class ReportService {
     @Autowired
     private ReportWriter reportWriter;
 
-    private static MarketIndex latest;
+    private MarketIndex latest;
 
-    public void newValues(MarketIndex current) {
-        if (current.equals(latest)) {
-            LOGGER.info("Skipping append to file, current values are the same as latest.");
+    public void handleNewMarketIndex(MarketIndex current) {
+        if (current.equals(latest) || current.hasNulls()) {
+            LOGGER.info("Skipping append to file, current values are the same as latest or empty.");
         } else {
             reportWriter.writeToFile(current);
             latest = current;

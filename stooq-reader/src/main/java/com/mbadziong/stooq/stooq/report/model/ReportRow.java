@@ -1,6 +1,6 @@
 package com.mbadziong.stooq.stooq.report.model;
 
-import com.mbadziong.stooq.stooq.httpclient.model.MarketIndex;
+import com.mbadziong.stooq.stooq.data.model.MarketIndex;
 
 import java.time.LocalDateTime;
 

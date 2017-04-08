@@ -34,7 +34,7 @@ public class Cli {
             }
 
         } catch (ParseException | NumberFormatException e) {
-            LOGGER.error("Parse error", e);
+            LOGGER.error("Parse error", e.getMessage());
             showHelp();
         }
 

@@ -1,7 +1,7 @@
-package com.mbadziong.stooq.stooq.httpclient.service;
+package com.mbadziong.stooq.stooq.data.service;
 
-import com.mbadziong.stooq.stooq.httpclient.marketindex.*;
-import com.mbadziong.stooq.stooq.httpclient.model.MarketIndex;
+import com.mbadziong.stooq.stooq.data.marketindex.*;
+import com.mbadziong.stooq.stooq.data.model.MarketIndex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

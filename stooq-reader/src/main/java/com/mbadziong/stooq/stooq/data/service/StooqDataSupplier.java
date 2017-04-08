@@ -1,6 +1,6 @@
-package com.mbadziong.stooq.stooq.httpclient.service;
+package com.mbadziong.stooq.stooq.data.service;
 
-import com.mbadziong.stooq.stooq.httpclient.model.MarketIndex;
+import com.mbadziong.stooq.stooq.data.model.MarketIndex;
 
 import java.math.BigDecimal;
 

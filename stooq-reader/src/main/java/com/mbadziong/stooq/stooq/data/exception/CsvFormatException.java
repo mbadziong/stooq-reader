@@ -1,4 +1,4 @@
-package com.mbadziong.stooq.stooq.httpclient.exception;
+package com.mbadziong.stooq.stooq.data.exception;
 
 public class CsvFormatException extends Exception {
 
