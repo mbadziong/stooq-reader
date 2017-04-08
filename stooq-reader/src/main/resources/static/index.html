@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Stooq-Reader</title>
+</head>
+
+<body>
+<script type="text/javascript">
+    var ws = new WebSocket("ws://localhost:3333/stooq");
+
+    ws.onopen = function() {
+        console.log("connected");
+    };
+
+    ws.onmessage = function (evt)
+    {
+        var received_msg = evt.data;
+        console.log("message: " + received_msg);
+    };
+
+    ws.onclose = function()
+    {
+        console.log("disconnected");
+    };
+</script>
+</body>
+</html>
