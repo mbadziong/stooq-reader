@@ -1,6 +1,6 @@
 package com.mbadziong.stooq.config;
 
-import com.mbadziong.stooq.stooq.StooqDataService;
+import com.mbadziong.stooq.quartz.StooqTask;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean;
@@ -9,14 +9,14 @@ import org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean;
 public class QuartzConfig {
 
     @Bean
-    public StooqDataService stooqDataService() {
-        return new StooqDataService();
+    public StooqTask stooqTask() {
+        return new StooqTask();
     }
 
     @Bean
     public MethodInvokingJobDetailFactoryBean stooqJob() {
         MethodInvokingJobDetailFactoryBean bean = new MethodInvokingJobDetailFactoryBean();
-        bean.setTargetObject(stooqDataService());
+        bean.setTargetObject(stooqTask());
         bean.setTargetMethod("run");
         bean.setConcurrent(false);
 

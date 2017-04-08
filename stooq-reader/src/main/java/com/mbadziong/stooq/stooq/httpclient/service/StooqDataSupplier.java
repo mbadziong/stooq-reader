@@ -1,4 +1,6 @@
-package com.mbadziong.stooq.stooq.data.service;
+package com.mbadziong.stooq.stooq.httpclient.service;
+
+import com.mbadziong.stooq.stooq.httpclient.model.MarketIndex;
 
 import java.math.BigDecimal;
 
@@ -12,4 +14,6 @@ public interface StooqDataSupplier {
     BigDecimal getMgiw40();
 
     BigDecimal getSwig80();
+
+    MarketIndex getAll();
 }

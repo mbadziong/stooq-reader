@@ -1,9 +1,9 @@
-package com.mbadziong.stooq.stooq.data.marketindex;
+package com.mbadziong.stooq.stooq.httpclient.marketindex;
 
 
-import com.mbadziong.stooq.stooq.data.model.StooqMarketIndex;
-import com.mbadziong.stooq.stooq.data.parser.StooqCsvParser;
-import com.mbadziong.stooq.stooq.exception.CsvFormatException;
+import com.mbadziong.stooq.stooq.httpclient.model.StooqMarketIndex;
+import com.mbadziong.stooq.stooq.httpclient.parser.StooqCsvParser;
+import com.mbadziong.stooq.stooq.httpclient.exception.CsvFormatException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

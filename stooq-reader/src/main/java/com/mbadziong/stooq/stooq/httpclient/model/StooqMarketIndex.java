@@ -1,4 +1,4 @@
-package com.mbadziong.stooq.stooq.data.model;
+package com.mbadziong.stooq.stooq.httpclient.model;
 
 public enum StooqMarketIndex {
     WIG("wig"),

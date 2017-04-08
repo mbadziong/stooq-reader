@@ -1,7 +1,7 @@
-package com.mbadziong.stooq.stooq.data.service;
+package com.mbadziong.stooq.stooq.httpclient.service;
 
-import com.mbadziong.stooq.stooq.data.marketindex.*;
-import com.mbadziong.stooq.stooq.data.parser.StooqCsvParser;
+import com.mbadziong.stooq.stooq.httpclient.marketindex.*;
+import com.mbadziong.stooq.stooq.httpclient.model.MarketIndex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,9 +24,6 @@ public class StooqDataSupplierImpl implements StooqDataSupplier {
 
     @Autowired
     private Swig80 swig80;
-
-    @Autowired
-    private StooqCsvParser parser;
 
     @Override
     public BigDecimal getWig() {
@@ -51,5 +48,16 @@ public class StooqDataSupplierImpl implements StooqDataSupplier {
     @Override
     public BigDecimal getSwig80() {
         return swig80.getCurrentValue();
+    }
+
+    @Override
+    public MarketIndex getAll() {
+        return new MarketIndex(
+                getWig(),
+                getWig20(),
+                getWig20Fut(),
+                getMgiw40(),
+                getSwig80()
+        );
     }
 }
