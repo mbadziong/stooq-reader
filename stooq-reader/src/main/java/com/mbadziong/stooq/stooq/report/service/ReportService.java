@@ -6,6 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ReportService {
 
@@ -19,12 +21,14 @@ public class ReportService {
         this.reportWriter = reportWriter;
     }
 
-    public void handleNewMarketIndex(MarketIndex current) {
+    public Optional<MarketIndex> handleNewMarketIndex(MarketIndex current) {
         if (current.equals(latest) || current.hasNulls()) {
             LOGGER.info("Skipping append to file, current values are the same as latest or empty.");
+            return Optional.empty();
         } else {
             reportWriter.writeToFile(current);
             latest = current;
+            return Optional.of(current);
         }
     }
 }

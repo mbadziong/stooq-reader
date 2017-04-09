@@ -1,5 +1,6 @@
 package com.mbadziong.stooq.task;
 
+import com.mbadziong.stooq.stooq.data.model.MarketIndex;
 import com.mbadziong.stooq.stooq.data.service.StooqDataSupplier;
 import com.mbadziong.stooq.stooq.report.service.ReportService;
 import com.mbadziong.stooq.stooq.websocket.StooqWebSocketHandler;
@@ -8,6 +9,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.Optional;
 
 @Component
 public class StooqTask {
@@ -28,11 +30,13 @@ public class StooqTask {
 
     @Scheduled(fixedDelayString = "${interval}")
     public void fetchMarketIndex() {
-        try {
-            stooqWebSocketHandler.broadcast();
-        } catch (IOException e) {
-            LOGGER.error("Websocket error");
+        Optional<MarketIndex> marketIndex = reportService.handleNewMarketIndex(stooqDataSupplier.getAll());
+        if(marketIndex.isPresent()) {
+            try {
+                stooqWebSocketHandler.broadcast(marketIndex.get());
+            } catch (IOException e) {
+                LOGGER.error("Websocket error", e);
+            }
         }
-        reportService.handleNewMarketIndex(stooqDataSupplier.getAll());
     }
 }

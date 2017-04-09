@@ -1,27 +1,28 @@
-<html lang="en">
+<!doctype html>
+<html>
+
 <head>
-    <meta charset="utf-8">
-    <title>Stooq-Reader</title>
+    <title>Line Chart Multiple Axes</title>
+    <style>
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
 </head>
 
-<body>
-<script type="text/javascript">
-    var ws = new WebSocket("ws://localhost:3333/stooq");
-
-    ws.onopen = function() {
-        console.log("connected");
-    };
-
-    ws.onmessage = function (evt)
-    {
-        var received_msg = evt.data;
-        console.log("message: " + received_msg);
-    };
-
-    ws.onclose = function()
-    {
-        console.log("disconnected");
-    };
-</script>
+<body ng-app="stooqReader" ng-controller="stooqHomeController">
+<div style="position: relative; width: 80%; height: 80%">
+    <canvas id="canvas"></canvas>
+</div>
+<script src="bower_components/chart.js/dist/Chart.bundle.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-websocket/dist/angular-websocket.min.js"></script>
+<script src="app/stooqReader.js"></script>
+<script src="app/factories/stooqData.js"></script>
+<script src="app/factories/stooqPlot.js"></script>
+<script src="app/controllers/stooqHomeController.js"></script>
 </body>
+
 </html>

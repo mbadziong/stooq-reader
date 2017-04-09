@@ -1,5 +1,7 @@
 package com.mbadziong.stooq.stooq.websocket;
 
+import com.google.gson.Gson;
+import com.mbadziong.stooq.stooq.data.model.MarketIndex;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -31,10 +33,10 @@ public class StooqWebSocketHandler extends TextWebSocketHandler {
         sessions.remove(session);
     }
 
-    public void broadcast() throws IOException {
+    public void broadcast(MarketIndex marketIndex) throws IOException {
         for(WebSocketSession webSocketSession : sessions) {
             LOGGER.info("Broadcasting to session...");
-            webSocketSession.sendMessage(new TextMessage("Hello "));
+            webSocketSession.sendMessage(new TextMessage(new Gson().toJson(marketIndex)));
         }
     }
 }
