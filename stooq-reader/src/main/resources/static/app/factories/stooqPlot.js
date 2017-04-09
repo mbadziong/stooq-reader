@@ -17,37 +17,47 @@
 
         StooqPlot.defaultDataConfig = function () {
             return {
-                labels: ["label1", "label2", "label3", "albel4", "label5"],
+                labels: [],
                 datasets: [{
                     label: "WIG",
                     borderColor: colors.red,
                     backgroundColor: colors.red,
+                    borderWidth: 1,
+                    lineTension: 0,
                     fill: false,
-                    data: [66, 5, 2, 44, 2]
+                    data: []
                 }, {
                     label: "WIG20",
                     borderColor: colors.blue,
                     backgroundColor: colors.blue,
+                    borderWidth: 1,
+                    lineTension: 0,
                     fill: false,
-                    data: [5, 8, 0, 23, 1]
+                    data: []
                 }, {
                     label: "WIG20FUT",
                     borderColor: colors.green,
                     backgroundColor: colors.green,
+                    borderWidth: 1,
+                    lineTension: 0,
                     fill: false,
-                    data: [4, 5, 33, 12, 2]
+                    data: []
                 }, {
                     label: "MWIG40",
                     borderColor: colors.orange,
                     backgroundColor: colors.orange,
+                    borderWidth: 1,
+                    lineTension: 0,
                     fill: false,
-                    data: [33, 94, 2, 12, 3]
+                    data: []
                 }, {
                     label: "SWIG80",
                     borderColor: colors.purple,
                     backgroundColor: colors.purple,
+                    borderWidth: 1,
+                    lineTension: 0,
                     fill: false,
-                    data: [12, 3, 7, 11, 2]
+                    data: []
                 }]
             };
         };
@@ -60,6 +70,11 @@
                 title: {
                     display: true,
                     text: 'Stooq Market Index'
+                },
+                scales: {
+                    xAxes: [{
+                        display: false
+                    }]
                 }
             };
         };
