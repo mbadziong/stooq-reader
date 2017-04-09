@@ -1,0 +1,22 @@
+{
+  "name": "stooq-reader",
+  "version": "0.0.0",
+  "homepage": "https://github.com/mbadziong/stooq-reader",
+  "authors": [
+    "matti <traceur775@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "chart.js": "^2.5.0",
+    "angular-websocket": "^2.0.0",
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.2.1"
+  }
+}
