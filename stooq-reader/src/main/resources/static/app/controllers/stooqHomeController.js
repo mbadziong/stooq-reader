@@ -20,6 +20,7 @@
             for (var rowNum = 0; rowNum < stooqDataRows.length; rowNum++) {
                 $scope.loadNewStooqDataRow(stooqDataRows[rowNum].marketIndex);
             }
+            $scope.myLine.update();
         }, function errorCallback(response) {
             //nothing to init
         });
