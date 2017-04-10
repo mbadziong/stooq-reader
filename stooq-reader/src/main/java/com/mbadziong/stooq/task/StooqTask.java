@@ -2,6 +2,7 @@ package com.mbadziong.stooq.task;
 
 import com.mbadziong.stooq.stooq.data.model.MarketIndex;
 import com.mbadziong.stooq.stooq.data.service.StooqDataSupplier;
+import com.mbadziong.stooq.stooq.report.model.ReportRow;
 import com.mbadziong.stooq.stooq.report.service.ReportService;
 import com.mbadziong.stooq.stooq.websocket.StooqWebSocketHandler;
 import org.slf4j.Logger;
@@ -33,7 +34,7 @@ public class StooqTask {
         Optional<MarketIndex> marketIndex = reportService.handleNewMarketIndex(stooqDataSupplier.getAll());
         if(marketIndex.isPresent()) {
             try {
-                stooqWebSocketHandler.broadcast(marketIndex.get());
+                stooqWebSocketHandler.broadcast(new ReportRow(marketIndex.get()));
             } catch (IOException e) {
                 LOGGER.error("Websocket error", e);
             }

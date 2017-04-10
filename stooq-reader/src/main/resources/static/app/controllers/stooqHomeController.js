@@ -18,7 +18,9 @@
         }).then(function successCallback(response) {
             var stooqDataRows = response.data;
             for (var rowNum = 0; rowNum < stooqDataRows.length; rowNum++) {
-                $scope.loadNewStooqDataRow(stooqDataRows[rowNum].marketIndex);
+                var currentRow = stooqDataRows[rowNum];
+                currentRow.marketIndex.time = currentRow.time;
+                $scope.loadNewStooqDataRow(currentRow.marketIndex);
             }
             $scope.myLine.update();
         }, function errorCallback(response) {
@@ -26,7 +28,7 @@
         });
 
         $scope.loadNewStooqDataRow = function (stooqData) {
-            $scope.lineChartData.labels.push(new Date());
+            $scope.lineChartData.labels.push(toDate(stooqData.time));
             $scope.lineChartData.datasets[0].data.push(stooqData.wig);
             $scope.lineChartData.datasets[1].data.push(stooqData.wig20);
             $scope.lineChartData.datasets[2].data.push(stooqData.wig20fut);
@@ -38,6 +40,17 @@
             $scope.loadNewStooqDataRow(stooqData);
             $scope.myLine.update();
         });
+
+        function toDate(d) {
+            return new Date(
+                d.date.year,
+                d.date.month,
+                d.date.day,
+                d.time.hour,
+                d.time.minute,
+                d.time.second
+            );
+        };
     }
 
     angular
