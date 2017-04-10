@@ -25,3 +25,6 @@ mvn spring-boot:run
 ```
 
 Visit http://localhost:3333/
+
+You should see something similiar to this screenshot:
+![Alt text](example.png?raw=true "Stooq Reader sample view")
