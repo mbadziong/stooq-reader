@@ -23,3 +23,5 @@ Inside /src directory type:
 ```
 mvn spring-boot:run
 ```
+
+Visit http://localhost:3333/
