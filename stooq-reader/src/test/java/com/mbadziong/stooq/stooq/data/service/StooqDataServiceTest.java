@@ -18,10 +18,10 @@ import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class StooqDataSupplierImplTest {
+public class StooqDataServiceTest {
 
     @InjectMocks
-    private StooqDataSupplierImpl stooqDataSupplier;
+    private StooqDataService stooqDataService;
 
     @Mock
     private Wig wig;
@@ -49,42 +49,42 @@ public class StooqDataSupplierImplTest {
 
     @Test
     public void testGetWig() throws Exception {
-        BigDecimal wig = stooqDataSupplier.getWig();
+        BigDecimal wig = stooqDataService.getWig();
 
         assertEquals(SampleMarketIndex.WIG, wig);
     }
 
     @Test
     public void testGetWig20() throws Exception {
-        BigDecimal wig20 = stooqDataSupplier.getWig20();
+        BigDecimal wig20 = stooqDataService.getWig20();
 
         assertEquals(SampleMarketIndex.WIG20, wig20);
     }
 
     @Test
     public void testGetWig20Fut() throws Exception {
-        BigDecimal wig20fut = stooqDataSupplier.getWig20Fut();
+        BigDecimal wig20fut = stooqDataService.getWig20Fut();
 
         assertEquals(SampleMarketIndex.WIG20FUT, wig20fut);
     }
 
     @Test
     public void testGetMgiw40() throws Exception {
-        BigDecimal mwig40 = stooqDataSupplier.getMgiw40();
+        BigDecimal mwig40 = stooqDataService.getMgiw40();
 
         assertEquals(SampleMarketIndex.MWIG40, mwig40);
     }
 
     @Test
     public void testGetSwig80() throws Exception {
-        BigDecimal swig80 = stooqDataSupplier.getSwig80();
+        BigDecimal swig80 = stooqDataService.getSwig80();
 
         assertEquals(SampleMarketIndex.SWIG80, swig80);
     }
 
     @Test
     public void testGetAll() throws Exception {
-        MarketIndex current = stooqDataSupplier.getAll();
+        MarketIndex current = stooqDataService.getAll();
 
         assertEquals(SampleMarketIndex.MARKET_INDEX, current);
     }

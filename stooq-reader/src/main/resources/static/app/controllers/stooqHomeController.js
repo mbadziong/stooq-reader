@@ -44,7 +44,7 @@
         function toDate(d) {
             return new Date(
                 d.date.year,
-                d.date.month,
+                d.date.month-1, // months from 0
                 d.date.day,
                 d.time.hour,
                 d.time.minute,

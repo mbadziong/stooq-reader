@@ -1,7 +1,7 @@
 package com.mbadziong.stooq.task;
 
 import com.mbadziong.stooq.stooq.data.model.MarketIndex;
-import com.mbadziong.stooq.stooq.data.service.StooqDataSupplier;
+import com.mbadziong.stooq.stooq.data.service.StooqDataService;
 import com.mbadziong.stooq.stooq.report.model.ReportRow;
 import com.mbadziong.stooq.stooq.report.service.ReportService;
 import com.mbadziong.stooq.stooq.websocket.StooqWebSocketHandler;
@@ -17,21 +17,21 @@ public class StooqTask {
 
     private static final Logger LOGGER = org.slf4j.LoggerFactory.getLogger(StooqTask.class);
 
-    private StooqDataSupplier stooqDataSupplier;
+    private StooqDataService stooqDataService;
 
     private ReportService reportService;
 
     private StooqWebSocketHandler stooqWebSocketHandler;
 
-    public StooqTask(StooqDataSupplier stooqDataSupplier, ReportService reportService, StooqWebSocketHandler stooqWebSocketHandler) {
-        this.stooqDataSupplier = stooqDataSupplier;
+    public StooqTask(StooqDataService stooqDataService, ReportService reportService, StooqWebSocketHandler stooqWebSocketHandler) {
+        this.stooqDataService = stooqDataService;
         this.reportService = reportService;
         this.stooqWebSocketHandler = stooqWebSocketHandler;
     }
 
     @Scheduled(fixedDelayString = "${interval}")
     public void fetchMarketIndex() {
-        Optional<MarketIndex> marketIndex = reportService.handleNewMarketIndex(stooqDataSupplier.getAll());
+        Optional<MarketIndex> marketIndex = reportService.handleNewMarketIndex(stooqDataService.getAll());
         if(marketIndex.isPresent()) {
             try {
                 stooqWebSocketHandler.broadcast(new ReportRow(marketIndex.get()));
