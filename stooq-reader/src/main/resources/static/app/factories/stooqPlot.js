@@ -82,7 +82,5 @@
         return StooqPlot;
     }
 
-    angular
-        .module('stooqReader')
-        .factory('StooqPlot', StooqPlot);
+    module.exports = StooqPlot;
 }());

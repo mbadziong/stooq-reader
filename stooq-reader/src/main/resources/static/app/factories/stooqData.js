@@ -3,7 +3,7 @@
 
     function StooqData($rootScope, $websocket) {
 
-        var WEBSOCKET_URL = "ws://localhost:3333/stooq";
+        const WEBSOCKET_URL = "ws://localhost:3333/stooq";
 
         var StooqData = {};
         var dataStream = $websocket(WEBSOCKET_URL);
@@ -15,7 +15,5 @@
         return StooqData;
     }
 
-    angular
-        .module("stooqReader")
-        .factory("StooqData", StooqData);
+    module.exports = StooqData;
 }());

@@ -6,35 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Stooq Reader</title>
-    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="styles/stooq.css"/>
 </head>
 
 <body ng-app="stooqReader" ng-controller="stooqHomeController">
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="">Stooq Reader</a>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="">Stooq Reader</a>
+            </div>
         </div>
+    </nav>
+    <div class="container vertical-center">
+        <canvas id="canvas"></canvas>
     </div>
-</nav>
-<div class="container vertical-center">
-    <canvas id="canvas"></canvas>
-</div>
-<footer class="footer navbar-fixed-bottom">
-    <div class="container">
-        <p class="text-muted">Copyright (c) 2017 Mateusz Badziong</p>
-    </div>
-</footer>
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/chart.js/dist/Chart.bundle.min.js"></script>
-<script src="bower_components/angular/angular.min.js"></script>
-<script src="bower_components/angular-websocket/dist/angular-websocket.min.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="app/stooqReader.js"></script>
-<script src="app/factories/stooqData.js"></script>
-<script src="app/factories/stooqPlot.js"></script>
-<script src="app/controllers/stooqHomeController.js"></script>
+    <footer class="footer navbar-fixed-bottom">
+        <div class="container">
+            <p class="text-muted">Copyright (c) 2017 Mateusz Badziong</p>
+        </div>
+    </footer>
+    <script src="/js/vendor.bundle.js"></script>
+    <script src="/js/app.bundle.js"></script>
 </body>
 
 </html>

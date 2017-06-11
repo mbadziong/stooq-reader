@@ -1,6 +1,8 @@
 (function () {
     'use strict';
 
+    require('chart.js');
+
     function StooqHomeController($rootScope, $scope, $http, stooqData, stooqPlot) {
 
         $scope.ctx = document.getElementById("canvas").getContext("2d");
@@ -44,7 +46,7 @@
         function toDate(d) {
             return new Date(
                 d.date.year,
-                d.date.month-1, // months from 0
+                d.date.month - 1, // months from 0
                 d.date.day,
                 d.time.hour,
                 d.time.minute,
@@ -53,7 +55,5 @@
         };
     }
 
-    angular
-        .module('stooqReader')
-        .controller('stooqHomeController', ['$rootScope', '$scope', '$http', 'StooqData', 'StooqPlot', StooqHomeController]);
+    module.exports = StooqHomeController;
 }());

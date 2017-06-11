@@ -5,7 +5,7 @@
 requirements:
 * java
 * maven
-* bower
+* nodejs
 
 Install:
 ```
@@ -15,7 +15,8 @@ mvn clean install
 cd src/main/resources/static/
 ```
 ```
-bower install
+npm install
+npm run bundle
 ```
 ### Run
 
